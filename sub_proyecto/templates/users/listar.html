@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block titulo %} Usuarios {% endblock %}
+
+{% block contenido %} 
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'crearu' %}" 
+        role="button">Agregar nuevo usuario</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Usuarios</h4>
+        <div class="table-responsive">
+            <table class="table table">
+                <thead>
+                    <tr>
+                        <th scope="col">Rut</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in listar %}
+                    <tr class="">
+                        <td scope="row">{{user.rut}}</td>
+                        <td>{{user.nombre}}</td>
+                        <td>{{user.apellido}}</td>
+                        <td>{{user.rol}}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Opciones
+                                </button>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="{% url 'editaru' user.id %}">Editar</a></li>
+                                  <li><a class="dropdown-item" href="{% url 'eliminaru' user.id %}">Eliminar</a></li>
+                                </ul>
+                              </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
