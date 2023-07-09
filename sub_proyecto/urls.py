@@ -5,9 +5,12 @@ from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
     path('',views.inicio, name='inicio'),
+    path('nosotros_copy',views.nosotros_copy, name='nosotros_copy'),
     path('nosotros',views.nosotros, name='nosotros'),
     path('dashboard',views.dashboard, name='dashboard'),
     path('index',views.index, name='index'),
+    path('index_copy',views.index_copy, name='index_copy'),
+    path('viewuser',views.viewuser, name='viewuser'),
     path('paginas/editar',views.editarp, name='editarp'),
     path('paginas/crear',views.crearp, name='crearp'),
     path('paginas/eliminar/<int:id>',views.eliminarp, name='eliminarp'),

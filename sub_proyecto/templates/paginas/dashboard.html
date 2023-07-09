@@ -3,20 +3,20 @@
 {% block titulo %} Dashboard {% endblock %}
 
 {% block contenido %} 
-<h1>Paginas disponibles</h1>
+    <h1>Paginas disponibles</h1>
 
-<div class="container" style="display: flex; text-align: center">
-    {% for pag in pags %}
-    <div class="col-4 col-sm-3 card m-3" style="width: 25%; text-align: center; display: flex;">
-        <img class="card-img-top" src="{{pag.imagen.url}}" height="280" width="20%">
-        <div class="card-body">
-            <h5 class="card-title">{{pag.titulo}}</h5>
-            <hr>
-            <p class="card-text">{{pag.Descripcion}}</p>
-            <a name="" id="" class="btn btn-primary " style="text-align: center; width: 40%;" href="{% url 'editarp' pag.id %}" role="button">Editar</a>
-            <a name="" id="" class="btn btn-danger " style="text-align: center; width: 40%;" href="{% url 'eliminarp' pag.id %}" role="button">Eliminar</a>
+    <div class="container" style="display: flex; text-align: center">
+        {% for pag in pags %}
+        <div class="col-4 col-sm-3 card m-3" style="width: 25%; text-align: center; display: flex;">
+            <img class="card-img-top" src="{{pag.imagen.url}}" height="280" width="20%">
+            <div class="card-body">
+                <h5 class="card-title">{{pag.titulo}}</h5>
+                <hr>
+                <p class="card-text">{{pag.Descripcion}}</p>
+                <a name="" id="" class="btn btn-primary " style="text-align: center; width: 40%;" href="{% url 'editarp' pag.id %}" role="button">Editar</a>
+                <a name="" id="" class="btn btn-danger " style="text-align: center; width: 40%;" href="{% url 'eliminarp' pag.id %}" role="button">Eliminar</a>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 {% endblock %}

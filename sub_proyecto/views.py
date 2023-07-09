@@ -12,9 +12,14 @@ def inicio(request):
         try:
             user = UserNueva.objects.get(rut=rut)
             pbasededatos=str(user.password)
+            rbbdd =str(user.rol)
             if password == pbasededatos:
-                #login(request, user)
-                return redirect('index')
+                if rbbdd == '1':
+                    #login(request, user)
+                    base = "base.html"
+                    return redirect('index')
+                else:
+                    return redirect('index_copy')
             else:
                 error_message = "Credenciales inválidas. Inténtalo de nuevo."
                 return render(request, 'paginas/inicio.html', {'error_message': error_message})
@@ -29,9 +34,19 @@ def inicio(request):
 def nosotros(request):
     return render(request, 'paginas/nosotros.html')
 
+def nosotros_copy(request):
+    return render(request, 'paginas/nosotros_copy.html')
+
+def viewuser(request):
+    return render(request, 'paginas/viewuser.html')
+
 def index(request):
     pags = Paginas.objects.all()
     return render(request, 'paginas/index.html', {'pags': pags})
+
+def index_copy(request):
+    pags = Paginas.objects.all()
+    return render(request, 'paginas/index_copy.html', {'pags': pags})
 
 def editarp(request, id):
     pagina = Paginas.objects.get(id=id)
